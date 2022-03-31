@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Test</title>
+    <style>
+        .navX {
+            display: flex;
+        }
+
+        .navX>li {
+            list-style: none;
+        }
+
+        @media (max-width:767px) {
+            #plano2 {
+                visibility: hidden;
+            }
+
+            /* .navX {
+                display: block;
+            } */
+        }
+
+        @media (max-width:769px) {
+
+            #plano1 {
+                visibility: visible;
+            }
+
+        }
+
+        /* .navX {
+            display: none;
+        } */
+    </style>
+</head>
+
+<body>
+
+
+    <section>
+        <ul class="navX">
+            <li>
+                <div class="_01" id="btn-clickPlan1">
+                    <button>Plano 1</button>
+                </div>
+            </li>
+            <li>
+                <div class="_02" id="btn-clickPlan2">
+                    <button>Plano 2</button>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <script>
+        document.getElementById('btn-clickPlan1').addEventListener('click', function () {
+            document.getElementById('plano1').style.visibility = 'visible';
+            document.getElementById('plano2').style.visibility = 'hidden';
+        })
+        document.getElementById('btn-clickPlan2').addEventListener('click', function () {
+            document.getElementById('plano1').style.visibility = 'hidden';
+            document.getElementById('plano2').style.visibility = 'visible';
+        })
+    </script>
+    <script src="https://kit.fontawesome.com/65cb289015.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
