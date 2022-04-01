@@ -18,10 +18,11 @@
             border-top-right-radius: 3px !important;
             margin-top: 0px;
         }
-    
+
         ._05:hover {
             cursor: pointer;
         }
+
         .search-tim {
             margin-top: 12px;
             color: aliceblue;
@@ -53,10 +54,10 @@
         input,
         select {
             height: 30px;
- 
+
         }
 
-        .select_X > option {
+        .select_X>option {
             text-align: justify !important;
         }
 
@@ -102,6 +103,17 @@
             </li>
         </ul>
     </section>
+    <script>
+        const citiesSelect = document.querySelector('.select_X');
+        async function loadCities() {
+            const result = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/MT/municipios`);
+            const data = await result.json();
+            citiesSelect.innerHTML = data.map(function ({ nome }) {
+                return `<option value="${nome}">${nome}</option>`;
+            }).join('');
+        }
+        loadCities();
+    </script>
     <script src="https://kit.fontawesome.com/65cb289015.js" crossorigin="anonymous"></script>
 </body>
 
