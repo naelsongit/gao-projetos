@@ -72,6 +72,7 @@
     </section>
 
     <script>
+
         localStorage.setItem('plano1OrgHeight', document.getElementById('plano1').offsetHeight)
         localStorage.setItem('plano1OrgWidth', document.getElementById('plano1').offsetWidth)
         localStorage.setItem('plano2OrgHeight', document.getElementById('plano2').offsetHeight)
@@ -140,14 +141,7 @@
                     localStorage.setItem('plano2Height', document.getElementById('plano2').offsetHeight)
                     localStorage.setItem('plano2Width', document.getElementById('plano2').offsetWidth)
                 }
-
-                // document.getElementById('plano2').style.width = localStorage.getItem('plano2Width') + 'px';
-                // document.getElementById('plano2').style.height = localStorage.getItem('plano2Height') + 'px';
-
-                // document.getElementById('plano1').style.width = localStorage.getItem('plano1Width') + 'px';
-                // document.getElementById('plano1').style.height = localStorage.getItem('plano1Height') + 'px';
-
-                //
+                
                 if (document.getElementById('plano2').offsetHeight > 0) {
                     document.getElementById('plano2').style.width = '0px';
                     document.getElementById('plano2').style.height = '0px';
@@ -156,7 +150,6 @@
         }
 
         setInterval(() => {
-            console.log(document.getElementById('plano2').offsetHeight)
             if (window.innerWidth > 767) {
                 document.getElementById('plano2').style.width = localStorage.getItem('plano2OrgWidth') + 'px';
                 document.getElementById('plano2').style.height = localStorage.getItem('plano2OrgHeight') + 'px';
