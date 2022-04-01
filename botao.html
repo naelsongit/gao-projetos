@@ -12,7 +12,18 @@
             list-style: none;
         }
 
+        @media (min-width:768px) {
+            #plano1 {
+                visibility: visible !important;
+            }
+
+            #plano2 {
+                visibility: visible !important;
+            }
+        }
+
         @media (max-width:767px) {
+
             #plano2 {
                 visibility: hidden;
             }
@@ -38,6 +49,12 @@
 
 <body>
 
+    <!-- <div id="plano1">
+        A
+    </div>
+    <div id="plano2">
+        B
+    </div> -->
 
     <section>
         <ul class="navX">
@@ -53,15 +70,105 @@
             </li>
         </ul>
     </section>
+
     <script>
+        localStorage.setItem('plano1OrgHeight', document.getElementById('plano1').offsetHeight)
+        localStorage.setItem('plano1OrgWidth', document.getElementById('plano1').offsetWidth)
+        localStorage.setItem('plano2OrgHeight', document.getElementById('plano2').offsetHeight)
+        localStorage.setItem('plano2OrgWidth', document.getElementById('plano2').offsetWidth)
+
         document.getElementById('btn-clickPlan1').addEventListener('click', function () {
+
+            if (document.getElementById('plano1').offsetHeight > 0) {
+                localStorage.setItem('plano1Height', document.getElementById('plano1').offsetHeight)
+                localStorage.setItem('plano1Width', document.getElementById('plano1').offsetWidth)
+            }
+
+            if (document.getElementById('plano2').offsetHeight > 0) {
+                localStorage.setItem('plano2Height', document.getElementById('plano2').offsetHeight)
+                localStorage.setItem('plano2Width', document.getElementById('plano2').offsetWidth)
+            }
+
+            if (document.getElementById('plano1').offsetHeight == 0) {
+                document.getElementById('plano1').style.width = localStorage.getItem('plano1Width') + 'px';
+                document.getElementById('plano1').style.height = localStorage.getItem('plano1Height') + 'px';
+            }
+
+            if (document.getElementById('plano2').offsetHeight > 0) {
+                document.getElementById('plano2').style.width = '0px';
+                document.getElementById('plano2').style.height = '0px';
+            }
+
             document.getElementById('plano1').style.visibility = 'visible';
             document.getElementById('plano2').style.visibility = 'hidden';
-        })
+
+        });
+
         document.getElementById('btn-clickPlan2').addEventListener('click', function () {
+
+            if (document.getElementById('plano1').offsetHeight > 0) {
+                localStorage.setItem('plano1Height', document.getElementById('plano1').offsetHeight)
+                localStorage.setItem('plano1Width', document.getElementById('plano1').offsetWidth)
+            }
+
+            if (document.getElementById('plano2').offsetHeight > 0) {
+                localStorage.setItem('plano2Height', document.getElementById('plano2').offsetHeight)
+                localStorage.setItem('plano2Width', document.getElementById('plano2').offsetWidth)
+            }
+
+            if (document.getElementById('plano2').offsetHeight == 0) {
+                document.getElementById('plano2').style.width = localStorage.getItem('plano2Width') + 'px';
+                document.getElementById('plano2').style.height = localStorage.getItem('plano2Height') + 'px';
+            }
+
+            if (document.getElementById('plano1').offsetHeight > 0) {
+                document.getElementById('plano1').style.width = '0px';
+                document.getElementById('plano1').style.height = '0px';
+            }
+
             document.getElementById('plano1').style.visibility = 'hidden';
+            document.getElementById('plano1').style.width = '0px';
+            document.getElementById('plano1').style.height = '0px';
             document.getElementById('plano2').style.visibility = 'visible';
-        })
+
+        });
+
+        function myFunction(x) {
+            if (x.matches) {
+
+                if (document.getElementById('plano2').offsetHeight > 0) {
+                    localStorage.setItem('plano2Height', document.getElementById('plano2').offsetHeight)
+                    localStorage.setItem('plano2Width', document.getElementById('plano2').offsetWidth)
+                }
+
+                // document.getElementById('plano2').style.width = localStorage.getItem('plano2Width') + 'px';
+                // document.getElementById('plano2').style.height = localStorage.getItem('plano2Height') + 'px';
+
+                // document.getElementById('plano1').style.width = localStorage.getItem('plano1Width') + 'px';
+                // document.getElementById('plano1').style.height = localStorage.getItem('plano1Height') + 'px';
+
+                //
+                if (document.getElementById('plano2').offsetHeight > 0) {
+                    document.getElementById('plano2').style.width = '0px';
+                    document.getElementById('plano2').style.height = '0px';
+                }
+            }
+        }
+
+        setInterval(() => {
+            console.log(document.getElementById('plano2').offsetHeight)
+            if (window.innerWidth > 767) {
+                document.getElementById('plano2').style.width = localStorage.getItem('plano2OrgWidth') + 'px';
+                document.getElementById('plano2').style.height = localStorage.getItem('plano2OrgHeight') + 'px';
+                document.getElementById('plano1').style.width = localStorage.getItem('plano1OrgWidth') + 'px';
+                document.getElementById('plano1').style.height = localStorage.getItem('plano1OrgHeight') + 'px';
+            }
+        }, 100)
+
+        var x = window.matchMedia("(max-width: 769px)")
+        myFunction(x)
+        x.addListener(myFunction)
+
     </script>
     <script src="https://kit.fontawesome.com/65cb289015.js" crossorigin="anonymous"></script>
 </body>
